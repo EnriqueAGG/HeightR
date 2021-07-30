@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 import './Menu.css';
-import { logOut } from 'ionicons/icons';
+import { logOut, clipboard, refresh } from 'ionicons/icons';
 import { IonIcon, IonLabel } from '@ionic/react';
 
 
@@ -14,10 +14,13 @@ export const Menu = () => {
                 <IonLabel className="label_logout"></IonLabel>
             </div>
             <div className="elemento" onClick={() => { historial.push("/lista") }}>
-
+            <IonIcon color="white" icon={clipboard} className="icono" />
+                <IonLabel className="label_logout"></IonLabel>
+           
             </div>
             <div className="elemento" onClick={() => { historial.push("/"); window.location.reload(); }}>
-
+            <IonIcon color="white" icon={refresh} className="icono" />
+                <IonLabel className="label_logout"></IonLabel>
             </div>
         </div>
     )

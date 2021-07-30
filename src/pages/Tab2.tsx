@@ -30,26 +30,26 @@ const Tab2: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 2</IonTitle>
+          <IonTitle className=" fw-bold text-center text-info">Crear la Altura del Usuario</IonTitle>
         </IonToolbar>
       </IonHeader>
 
 
 
       <IonContent fullscreen>
-        <IonCard>
-          <IonCardHeader>
+        <IonCard >
+          <IonCardHeader >
             <IonCardSubtitle>
 
 
 
 
-              <IonItem>
+              <IonItem className="text-light " >
                
                 {/* <IonInput type="number" value = {formulario} onChange={capturar}></IonInput>cm */}
-                <input
+                <input 
                   type="text"
-                  className="user"
+                  className="user fw-normal text-center bg-dark  mx-auto"
                   placeholder="altura"
                   name="altura"
                   value={form.altura}
@@ -58,10 +58,11 @@ const Tab2: React.FC = () => {
               </IonItem>
 
 
-              <IonItem>
+              <IonItem className="text-light ">
               <input
                   type="text"
-                  placeholder="usuario"
+                  className="fw-normal text-center bg-dark  mx-auto"
+                  placeholder="nombre del usuario"
                   name="usuario"
                   value={form.usuario}
                   onChange={capturar}
@@ -80,9 +81,9 @@ const Tab2: React.FC = () => {
 
       {
         lista.map((l,index) => (
-          <IonItemSliding>
+          <IonItemSliding >
           <IonItem>
-            <IonLabel>Item {index+1}</IonLabel>
+            <IonLabel className="text-primary">Item {index+1}</IonLabel>
           </IonItem>
           <IonItemOptions side="end">
             <IonItemOption onClick={() => { }}>Unread</IonItemOption>
@@ -92,7 +93,6 @@ const Tab2: React.FC = () => {
       }
 
 
-        <p>hola mundo</p>
 
         <Menu />
 

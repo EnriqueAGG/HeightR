@@ -43,8 +43,8 @@ const Tab1: React.FC = () => {
   return (
     <>
       <div className="container h-100 py-4 bg-dark text-white">
-
-        <h1 className="text-center mt-4">Login</h1>
+    
+        <h1 className="text-dark bg-info text-center mt-4">Login</h1>
        
           <div className="mb-3 mt-5">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -84,7 +84,7 @@ const Tab1: React.FC = () => {
 
         <div className="row">
           <div className="col-5 text-center mx-auto mt-5">
-            <img src="./assets/icon/favicon.png" alt="" />
+            <img src="./assets/icon/height.png" alt="" />
           </div>
         </div>
       </div>
