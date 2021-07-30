@@ -1,0 +1,26 @@
+.navegacion{
+    width: 100%;
+    background-color: rgb(61, 38, 187);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+.elemento{
+    flex: 1;
+    padding: 1em 0;
+    
+}
+.elemento:active{
+    background-color: black;
+}
+.elemento:nth-child(2), .elemento:nth-child(3){
+    border-left: 1px solid rgb(179, 179, 179);
+}
+
+.icono{
+    font-size: 2em;
+}
