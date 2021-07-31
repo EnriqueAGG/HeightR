@@ -55,6 +55,7 @@ const Tab1: React.FC = () => {
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
 
+
             <input name="pass" value={form.pass} onChange={capturar} type="password" className="w-100 form-control " id="exampleInputPassword1" />
           </div>
 

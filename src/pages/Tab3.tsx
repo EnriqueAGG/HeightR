@@ -1,37 +1,71 @@
+import { IonCard, IonContent, IonItemOption, IonItemOptions, IonItemSliding } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonCardHeader, IonCardSubtitle, IonItem, IonLabel } from '@ionic/react';
+// import { IonPage } from '@ionic/react';
+// import { useState } from 'react';
 
-import { IonPage } from '@ionic/react';
 import './Tab3.css';
+import { Menu } from '../components/Menu';
 
+
+
+const lista = [0,0,0,0,0,0,0,0];
 const Tab3: React.FC = () => {
-  return (
-    <IonPage>
-    
-      <table className="table table-dark table-hover table-responsive ">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-  </tbody>
 
-</table>
-    </IonPage>
+ 
+
+  
+    
+
+const [form, setForm] = useState({
+    altura:"",
+    usuario: ""
+  })
+
+
+  // const capturar =(e:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>)=>{
+  //     setForm({
+  //         ...form,
+  //         [e.target.name]: e.target.value
+  //     })
+
+  // }
+    
+  return (
+    <IonContent fullscreen> 
+
+
+
+        <IonCard >
+          <IonCardHeader >
+            <IonCardSubtitle>   
+git
+
+              <button className=" btn btn-danger w-100 mt-2">Agregar</button>
+
+            </IonCardSubtitle>
+          </IonCardHeader>
+        </IonCard>
+
+        {
+        lista.map((l,index) => (
+          <IonItemSliding >
+      <IonItem>
+      <IonLabel className="text-primary">Item {index+1}
+             <button className="btn btn-primary"> Borrar</button></IonLabel>
+          </IonItem>
+          <IonItemOptions side="end">
+            <IonItemOption onClick={() => { }}>Unread</IonItemOption>
+          </IonItemOptions>
+        </IonItemSliding>
+        ))
+        }
+        <Menu />
+        
+    
+
+
+    </IonContent>
   );
 };
 

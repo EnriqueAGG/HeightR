@@ -69,11 +69,12 @@ const Tab2: React.FC = () => {
                 />
               </IonItem>
 
-
+              
 
 
             </IonCardSubtitle>
           </IonCardHeader>
+              <button className=" btn btn-primary w-100 mt-3">Agregar</button>
         </IonCard>
 
         <br />
@@ -83,8 +84,10 @@ const Tab2: React.FC = () => {
         lista.map((l,index) => (
           <IonItemSliding >
           <IonItem>
-            <IonLabel className="text-primary">Item {index+1}</IonLabel>
+            <IonLabel className="text-primary">Item {index+1}
+             <button className="btn btn-primary"> Borrar</button></IonLabel>
           </IonItem>
+          
           <IonItemOptions side="end">
             <IonItemOption onClick={() => { }}>Unread</IonItemOption>
           </IonItemOptions>
