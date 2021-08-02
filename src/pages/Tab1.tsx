@@ -3,6 +3,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { host } from '../api';
 
 
 
@@ -15,7 +16,10 @@ const Tab1: React.FC = () => {
     usuario: ""
   })
 
-  const [error, setError] = useState(2)
+  const [error, setError] = useState({
+    estado: 2,
+    mensaje: ""
+  })
 
   const capturar = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     setForm({
@@ -25,62 +29,101 @@ const Tab1: React.FC = () => {
 
   }
 
-  const login = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const login = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
     if (form.usuario.trim() === "" || form.pass.trim() === "") {
-      console.log('error estan vacios');
-      setError(1);
+      // console.log('error estan vacios');
+      setError({
+        estado: 1,
+        mensaje: "Todos los campos son obligatorios"
+      });
       return;
     }
-    setError(0);
-    console.log(form);
-    setTimeout(() => {
-      historial.replace("/altura")
-    }, 1500);
+
+
+
+    try {
+      const url = `${host}/Empresa/${form.usuario}&${form.pass}`
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+
+      const data = await res.json();
+
+      if (data) {
+        setError({
+          estado: 0,
+          mensaje: ""
+        });
+
+        localStorage.setItem('id',data.id);
+        setError({
+          estado: 2,
+          mensaje: ""
+        });
+        setTimeout(() => {
+          
+          historial.replace("/altura");
+          
+        }, 1000);
+      }
+
+    } catch (error) {
+      setError({
+        estado: 1,
+        mensaje: "Error en el usuario o la contraseña"
+      });
+    }
+
+
+
   }
 
   return (
     <>
       <div className="container h-100 py-4 bg-dark text-white">
-    
-        <h1 className="text-dark bg-info text-center mt-4">Login</h1>
-       
-          <div className="mb-3 mt-5">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
 
-            <input name="usuario" value={form.usuario} onChange={capturar} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <h1 className="text-dark bg-info text-center mt-4 rounded py-2">Inicio de sesión </h1>
 
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+        <div className="mb-3 mt-5">
+          <label htmlFor="exampleInputEmail1" className="form-label">Empresa</label>
+
+          <input name="usuario" value={form.usuario} onChange={capturar} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
 
 
-            <input name="pass" value={form.pass} onChange={capturar} type="password" className="w-100 form-control " id="exampleInputPassword1" />
-          </div>
+          <input name="pass" value={form.pass} onChange={capturar} type="password" className="w-100 form-control " id="exampleInputPassword1" />
+        </div>
 
-          <button type="submit" className="btn btn-primary w-100 mt-3" onClick={login}>Login</button>
-      
+        <button type="submit" className="btn btn-primary w-100 mt-3" onClick={login}>Ingresar</button>
+
 
         {
-          error === 1 ? (
+          error.estado === 1 ? (
             <div className="row mt-5">
               <div className="col-12">
                 <div className="alert alert-danger" role="alert">
-                  Faltan campos por llenar
+                  {error.mensaje}
                 </div>
               </div>
             </div>
           )
-          : error === 0 &&(
-            <div className="row mt-5">
-              <div className="col-12">
-                <div className="alert alert-success" role="alert">
-                  Login exitoso
+            : error.estado === 0 && (
+              <div className="row mt-5">
+                <div className="col-12">
+                  <div className="alert alert-success" role="alert">
+                    Login exitoso
+                  </div>
                 </div>
               </div>
-            </div>
-          )
+            )
         }
 
         <div className="row">

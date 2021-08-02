@@ -4,14 +4,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
     position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
+    /* margin-top: 5em; */
 }
 .elemento{
     flex: 1;
-    padding: 1em 0;
+    padding-top: .5em;
+    /* padding: .5em 0; */
     
 }
 .elemento:active{
@@ -20,7 +23,9 @@
 .elemento:nth-child(2), .elemento:nth-child(3){
     border-left: 1px solid rgb(179, 179, 179);
 }
-
+.label_logout{
+    font-size: .8em;
+}
 .icono{
-    font-size: 2em;
+    font-size: 1.5em;
 }
